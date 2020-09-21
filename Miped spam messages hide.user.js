@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Miped spam messages hide
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Удаляет плохие сообщения
 // @author       Andronio
 // @homepage     https://github.com/Andronio2/Miped-spam-messages-hide
@@ -42,7 +42,7 @@ let oldUser         = 200;   // Если у пользователя больш�
             let messagesPics = message.querySelectorAll("img");
             let imgCount = 0;
             messagesPics.forEach(img => {
-                if (!img.classList.contains('smilie'))
+                if (!img.classList.contains('smilie') && !img.closest('.bbCodeBlock--unfurl'))
                     imgCount++;
             });
             if (imgCount > maxPics && messagesCount < oldUser || imgCount && messagesCount < newUserMessages) {
