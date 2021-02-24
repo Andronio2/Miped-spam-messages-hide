@@ -10,7 +10,7 @@
 // @downloadURL  https://github.com/Andronio2/Miped-spam-messages-hide/raw/master/Miped%20spam%20messages%20hide.user.js
 // @match        https://miped.ru/f/threads/*
 // @grant        none
-// @run-at       document-body
+// @run-at       document-end
 // ==/UserScript==
 let mipedCounterTimeout = 200;
 (function repeat() {
