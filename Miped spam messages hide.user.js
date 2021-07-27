@@ -1,16 +1,13 @@
 // ==UserScript==
 // @name         Miped spam messages hide
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Удаляет плохие сообщения
 // @author       Andronio
-// @homepage     https://github.com/Andronio2/Miped-spam-messages-hide
-// @supportURL   https://github.com/Andronio2/Miped-spam-messages-hide/issues
-// @updateURL    https://github.com/Andronio2/Miped-spam-messages-hide/raw/master/Miped%20spam%20messages%20hide.user.js
-// @downloadURL  https://github.com/Andronio2/Miped-spam-messages-hide/raw/master/Miped%20spam%20messages%20hide.user.js
 // @match        https://miped.ru/f/threads/*
+// @match        https://mipped.com/f/threads/*
 // @grant        none
-// @run-at       document-end
+// @run-at       document-body
 // ==/UserScript==
 let mipedCounterTimeout = 200;
 (function repeat() {
