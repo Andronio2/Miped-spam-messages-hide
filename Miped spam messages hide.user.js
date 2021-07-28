@@ -6,8 +6,8 @@
 // @author       Andronio
 // @homepage     https://github.com/Andronio2/Miped-spam-messages-hide
 // @supportURL   https://github.com/Andronio2/Miped-spam-messages-hide/issues
-// @updateURL    https://github.com/Andronio2/Miped-spam-messages-hide/blob/master/Miped%20spam%20messages%20hide.user.js
-// @downloadURL  https://github.com/Andronio2/Miped-spam-messages-hide/blob/master/Miped%20spam%20messages%20hide.user.js
+// @updateURL    https://github.com/Andronio2/Miped-spam-messages-hide/raw/master/Miped%20spam%20messages%20hide.user.js
+// @downloadURL  https://github.com/Andronio2/Miped-spam-messages-hide/raw/master/Miped%20spam%20messages%20hide.user.js
 // @match        https://miped.ru/f/threads/*
 // @match        https://mipped.com/f/threads/*
 // @grant        none
