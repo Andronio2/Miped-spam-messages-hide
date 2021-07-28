@@ -1,9 +1,13 @@
 // ==UserScript==
 // @name         Miped spam messages hide
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Удаляет плохие сообщения
 // @author       Andronio
+// @homepage     https://github.com/Andronio2/Miped-spam-messages-hide
+// @supportURL   https://github.com/Andronio2/Miped-spam-messages-hide/issues
+// @updateURL    https://github.com/Andronio2/Miped-spam-messages-hide/blob/master/Miped%20spam%20messages%20hide.user.js
+// @downloadURL  https://github.com/Andronio2/Miped-spam-messages-hide/blob/master/Miped%20spam%20messages%20hide.user.js
 // @match        https://miped.ru/f/threads/*
 // @match        https://mipped.com/f/threads/*
 // @grant        none
@@ -18,7 +22,7 @@ let mipedCounterTimeout = 200;
 */
 
 let completeHide    = 0;     // Прятать новичка всегда - 1 или только если в сообщении есть картинка - 0
-let newUserMessages = 15;    // Если меньше сообщений, то прятать сообщение при completeHide = 1 или есть картинка
+let newUserMessages = 50;    // Если меньше сообщений, то прятать сообщение при completeHide = 1 или есть картинка
 let maxPics         = 2;     // Если у старичка больше 2 картинок в сообщении, то прятать
 let oldUser         = 200;   // Если у пользователя больше сообщений, то его картинки прятаться не будут никогда
 
@@ -32,16 +36,12 @@ let oldUser         = 200;   // Если у пользователя больш�
     if (!mipedCounterTimeout) return;
     let badMessageCounter = 0;
     messages.forEach(message => {
-        let messagesCount = +message.closest(".message-inner").querySelectorAll(".pairs.pairs--justified dd")[3].innerText.replace(/[^\d]+/, '');  // Количество сообщений у пользователя
-        if (completeHide && messagesCount < newUserMessages)
+        let messagesCount = +message.closest(".message-inner").querySelectorAll(".pairs.pairs--justified dd")[2].innerText.replace(/[^\d]+/, '');  // Количество сообщений у пользователя
+        if (completeHide && messagesCount < newUserMessages) {
             message.closest(".message--post.message").style.display = "none";
-        else {
-            let messagesPics = message.querySelectorAll("img");
-            let imgCount = 0;
-            messagesPics.forEach(img => {
-                if (!img.classList.contains('smilie') && !img.closest('.bbCodeBlock--unfurl'))
-                    imgCount++;
-            });
+        } else {
+            let messagesPics = message.querySelectorAll(".bbMediaWrapper, .bbImageWrapper, .js-lbImage");
+            let imgCount = messagesPics.length;
             if (imgCount > maxPics && messagesCount < oldUser || imgCount && messagesCount < newUserMessages) {
                 let picsBuffer = [];
                 messagesPics.forEach(img => {
